@@ -13,7 +13,7 @@ import { Flavor } from './entities/flavor.entity';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { Event } from '../events/entities/event.entity';
 
-@Injectable()
+@Injectable() // makes it a provider
 export class CoffeesService {
   constructor(
     @InjectRepository(Coffee)
