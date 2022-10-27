@@ -14,6 +14,8 @@ import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
+import { ApiCreatedResponse } from '@nestjs/swagger';
+import { Coffee } from "./entities/coffee.entity";
 
 @Controller('coffees')
 export class CoffeesController {
@@ -31,6 +33,7 @@ export class CoffeesController {
     return this.coffeesService.findOne('' + id);
   }
 
+  @ApiCreatedResponse({ type: Coffee })
   @Post()
   @HttpCode(HttpStatus.GONE)
   create(@Body() createCoffeeDto: CreateCoffeeDto) {

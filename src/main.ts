@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -14,6 +15,13 @@ async function bootstrap() {
       },
     }),
   );
+  const config = new DocumentBuilder()
+    .setTitle('Coffee Square API')
+    .setDescription('API for a Coffee Application built using NestJS')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('/', app, document);
   await app.listen(3000);
 }
 bootstrap();
