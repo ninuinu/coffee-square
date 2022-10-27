@@ -15,7 +15,7 @@ import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { ApiCreatedResponse } from '@nestjs/swagger';
-import { Coffee } from "./entities/coffee.entity";
+import { Coffee } from './entities/coffee.entity';
 
 @Controller('coffees')
 export class CoffeesController {
