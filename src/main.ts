@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { ApiKeyGuard } from './common/guards/api-key.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -25,8 +26,8 @@ async function bootstrap() {
   SwaggerModule.setup('/', app, document);
 
   app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalGuards(new ApiKeyGuard());
 
   await app.listen(3000);
-
 }
 bootstrap();
